@@ -1,0 +1,24 @@
+JobName: "bike_bronze_gold_sit"
+task_list:
+  task1:
+    type: "default"
+    task_id: "configure"
+  task2:
+    type: "custom"
+    task_id: "transformation"
+    python_callable: "BikeEmrLogic.dummy_method"
+  task3:
+    type: "custom"
+    task_id: "bronze_to_silver"
+    python_callable: "BikeEmrLogic.dummy_method"
+  task4:
+    type: "custom"
+    task_id: "silver_to_gold"
+    python_callable: "BikeEmrLogic.dummy_method"
+  task5:
+    type: "default"
+    task_id: "migration_to_snowflake"
+  task6:
+    type: "default"
+    task_id: "data-validation"
+task_order: ['task1 >> task2 >> task3 >> task5', 'task2 >> task4 >> task5', 'task5 >> task6']
